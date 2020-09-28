@@ -22,6 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
 # テーブル設計
 
 ## users テーブル
@@ -31,33 +32,34 @@ Things you may want to cover:
 | name     | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
-  
-  ###Association
 
-  - has_many :room_users
-  - has_many :rooms, though: room_users
-  - has_many :messages
+### Association
+
+- has_many :room_users
+- has_many :rooms, through: room_users
+- has_many :messages
 
 ## rooms テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | name   | string | null: false |
-###Association
+
+### Association
 
 - has_many :room_users
-- has_many :users, though: room_users
+- has_many :users, through: room_users
 - has_many :messages
 
 ## room_users テーブル
 
-| Column | Type            Options                        |
+| Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| room   | references | null: 
-false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
 
-###Association
+### Association
+
 - belongs_to :room
 - belongs_to :user
 
@@ -69,7 +71,7 @@ false, foreign_key: true |
 | user    | references | null: false, foreign_key: true |
 | room    | references | null: false, foreign_key: true |
 
-###Association
+### Association
 
--belongs_to :room
--belongs_to :user
+- belongs_to :room
+- belongs_to :user
